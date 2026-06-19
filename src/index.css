@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-ibm-dark text-gray-100 font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(15, 98, 254, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(15, 98, 254, 0.05) 0%, transparent 50%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass-card {
+    @apply bg-ibm-dark-light/40 backdrop-blur-xl border border-ibm-dark-lighter/50 rounded-2xl shadow-glass;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:shadow-glass-lg hover:border-ibm-blue/30 hover:scale-[1.02];
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-ibm-blue via-ibm-blue-light to-ibm-blue bg-clip-text text-transparent;
+  }
+
+  /* Neon Glow */
+  .neon-glow {
+    @apply shadow-neon;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-ibm-blue hover:bg-ibm-blue-light text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-neon;
+  }
+
+  .btn-secondary {
+    @apply bg-ibm-dark-lighter hover:bg-ibm-dark-light text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 border border-ibm-blue/30;
+  }
+
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-ibm-dark-light rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-ibm-blue/50 rounded-full hover:bg-ibm-blue;
+  }
+
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-gold {
+    @apply badge bg-accent-gold/20 text-accent-gold border border-accent-gold/30;
+  }
+
+  .badge-silver {
+    @apply badge bg-accent-silver/20 text-accent-silver border border-accent-silver/30;
+  }
+
+  .badge-bronze {
+    @apply badge bg-accent-bronze/20 text-accent-bronze border border-accent-bronze/30;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply glass-card p-6 text-center;
+  }
+
+  /* Match Card */
+  .match-card {
+    @apply glass-card-hover p-6 cursor-pointer;
+  }
+
+  /* Rank Indicator */
+  .rank-up {
+    @apply text-accent-green animate-rank-up;
+  }
+
+  .rank-down {
+    @apply text-accent-red animate-rank-down;
+  }
+
+  /* Loading Spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-4 border-ibm-dark-lighter border-t-ibm-blue;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Made with Bob */
