@@ -205,12 +205,27 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Serve static files in production
+const isProduction = process.env.NODE_ENV === 'production';
+if (isProduction) {
+  const distPath = join(__dirname, '..', 'dist');
+  app.use(express.static(distPath));
+  
+  // Serve index.html for all non-API routes
+  app.get('*', (req, res) => {
+    res.sendFile(join(distPath, 'index.html'));
+  });
+}
+
 // Start server
 initDatabase().then(() => {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
     console.log(`📊 Database: ${dbPath}`);
     console.log(`✅ Using sql.js (no build tools required)`);
+    if (isProduction) {
+      console.log(`📦 Serving static files from dist/`);
+    }
   });
 });
 
